@@ -13,7 +13,7 @@ angular.module('myApp.entry', ['ngRoute', 'myApp.contact', 'myApp.add'])
     $scope.contacts = null;
     $scope.contacts = $localStorage.prevPageData;
 
-    if (!$scope.contacts) { // if already populated don't call service
+    if ($scope.contacts == null) { // if already populated don't call service
         contactService.callService().then(function (response) {
             $scope.contacts = response.data.contacts;
         }).catch(function (e) {
