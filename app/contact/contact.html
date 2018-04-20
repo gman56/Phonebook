@@ -1,0 +1,42 @@
+<div class="container-fluid">
+    <form name="updateContact">
+        <div class="row">
+            <div class="col-md-4">
+    <span class="">
+        <img src="{{singleContact.avatar}}" alt="N/A"/>
+    </span>
+            </div>
+            <div class="col-md-4 display-size">
+                <div class="display-pad">
+                    <button class="btn btn-info" ng-click="toggleName()" ng-if="nameEdit==false">Edit</button>
+                    <span class="label label-default">Name:</span>
+                    <span ng-if="nameEdit==false">{{singleContact.name}}</span> <br>
+                    <input ng-if="nameEdit==true" type="text" ng-model="editContact.name" class="form-control" required>
+                </div>
+                <div class="display-pad">
+                    <button class="btn btn-info" ng-click="togglePhone()" ng-if="phoneEdit==false">Edit</button>
+                    <span class="label label-default">Phone:</span>
+                    <span ng-if="phoneEdit==false">{{singleContact.phone}}</span> <br>
+                    <input ng-if="phoneEdit==true"type="text" ng-model="editContact.phone" class="form-control" required>
+                </div>
+                <div class="display-pad">
+                    <button class="btn btn-info" ng-click="toggleEmail()" ng-if="emailEdit==false">Edit</button>
+                    <span class="label label-default">Email:</span>
+                    <span ng-if="emailEdit==false">{{singleContact.email}}</span> <br>
+                    <input ng-if="emailEdit==true"type="text" ng-model="editContact.email" class="form-control" required>
+                </div>
+                <div class="display-pad">
+                    <button class="btn btn-info" ng-click="toggleBirthday()" ng-if="birthdayEdit==false">Edit</button>
+                    <span class="label label-default">Birthday:</span>
+                    <span ng-if="birthdayEdit==false">{{singleContact.birthday}}</span> <br>
+                    <input ng-if="birthdayEdit==true"type="text" ng-model="editContact.birthday" class="form-control" required>
+                </div>
+                <button class="btn btn-primary margin-btn" ng-click="save()" ng-disabled="updateContact.$invalid"
+                        ng-if="birthdayEdit==true || emailEdit==true || phoneEdit==true || nameEdit==true">Save</button>
+                <button class="btn btn-primary margin-btn" ng-click="cancel()"
+                        ng-if="birthdayEdit==true || emailEdit==true || phoneEdit==true || nameEdit==true">Cancel</button>
+                <button class="btn btn-danger margin-btn" ng-click="delete()">Delete Contact</button>
+            </div>
+        </div>
+    </form>
+</div>

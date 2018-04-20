@@ -1,0 +1,22 @@
+.small-pic {
+    max-height: 100px;
+    max-width: 100px;
+    min-width: 50px !important;
+    min-height: 50px !important;
+}
+.btn-style {
+    float: right;
+}
+
+thead > tr > td {
+    font-weight: bold;
+}
+
+td {
+    font-size: 16px;
+}
+
+.table>tbody>tr>td,
+.table>tbody>tr>th {
+    border-top: none;
+}
