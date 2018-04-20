@@ -1,4 +1,4 @@
-describe('myApp', function(){
+describe('EntryController', function(){
     beforeEach(module('myApp'));
 
     var ctrl, scope;

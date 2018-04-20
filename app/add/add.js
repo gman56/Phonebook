@@ -12,14 +12,13 @@ angular.module('myApp.add', ['ngRoute'])
     .controller('AddController', function($scope, $routeParams, $localStorage, $location) {
         $scope.singleContact = null;
         let newObj = {};
-        let contactId = $routeParams.id;
         $scope.pageData = $localStorage.prevPageData;
 
-        for(let i of $scope.pageData) {
-            if(i.id == contactId) {
-                $scope.singleContact = i;
-            }
-        }
+
+        let contactArr = [];
+        angular.forEach($scope.pageData, function(value) {
+            contactArr.push(value);
+        });
 
         $scope.newContact = {};
 
@@ -32,16 +31,16 @@ angular.module('myApp.add', ['ngRoute'])
         };
 
         $scope.onAddClick = function() {
-            let lastElementId = $scope.pageData[$scope.pageData.length - 1] ? $scope.pageData[$scope.pageData.length - 1].id: 1;
+            let lastElementId = contactArr[contactArr.length - 1] ? contactArr[contactArr.length - 1].id: 1;
             newObj.id = lastElementId += 1;
             newObj.name = $scope.newContact.name;
             newObj.phone = $scope.newContact.phone;
             newObj.email = $scope.newContact.email;
             newObj.birthday = $scope.newContact.birthday;
             newObj.avatar = $scope.newContact.avatar;
-            $scope.pageData.push(newObj);
+            contactArr.push(newObj);
 
-            $localStorage.prevPageData = $scope.pageData;
+            $localStorage.prevPageData = contactArr;
             $location.path('/entry');
         };
 

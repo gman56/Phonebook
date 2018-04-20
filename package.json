@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "description": "Ensono Developer Directory",
-  "repository": "",
+  "repository": "https://github.com/gman56/Phonebook",
   "license": "MIT",
   "devDependencies": {
     "bower": "^1.7.7",
@@ -21,7 +21,7 @@
     "update-deps": "npm update",
     "postupdate-deps": "bower update",
     "prestart": "npm install",
-    "start": "http-server -a localhost -p 8005 -c-1 ./app",
+    "start": "http-server -a localhost -p 3000 -c-1 ./app",
     "pretest": "npm install",
     "test": "karma start karma.conf.js",
     "test-single-run": "karma start karma.conf.js --single-run",

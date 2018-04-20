@@ -40,7 +40,12 @@ angular.module('myApp.contact', ['ngRoute'])
         let contactId = $routeParams.id;
         $scope.pageData = $localStorage.prevPageData;
 
-        for (let i of $scope.pageData) {
+        let contactArr = [];
+        angular.forEach($scope.pageData, function(value) {
+            contactArr.push(value);
+        });
+
+        for (let i of contactArr) {
             if (i.id == contactId) { // if id equals routeParam display that contact
                 $scope.singleContact = i;
                 $scope.editContact = JSON.parse(JSON.stringify(i)); // copy stored object for edit reset
@@ -51,12 +56,13 @@ angular.module('myApp.contact', ['ngRoute'])
         // updating localStorage object
         $scope.save = function () {
             $scope.setAllFalse();
-            for (let i of $scope.pageData) {
+            for (let i of contactArr) {
                 if (i.id == contactId) { // if id equals routeParam
                     i.name = $scope.editContact.name;
                     i.phone = $scope.editContact.phone;
                     i.email = $scope.editContact.email;
                     i.birthday = $scope.editContact.birthday;
+                    $localStorage.prevPageData = contactArr;
                 }
             }
 
@@ -70,9 +76,10 @@ angular.module('myApp.contact', ['ngRoute'])
 
         $scope.delete = function() {
             if(confirm("Are you sure you want to delete " + $scope.singleContact.name)) {
-                for (let i=0; i<$scope.pageData.length; i++) {
-                    if ($scope.pageData[i].id == contactId) { // if id equals routeParam display that contact
-                        $scope.pageData.splice(i,1);
+                for (let i=0; i<contactArr.length; i++) {
+                    if (contactArr[i].id == contactId) { // if id equals routeParam display that contact
+                        contactArr.splice(i,1);
+                        $localStorage.prevPageData = contactArr;
                     }
                 }
                 $location.path('/entry');
